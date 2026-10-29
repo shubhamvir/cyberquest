@@ -1,0 +1,22 @@
+{
+  "id": "/",
+  "name": "CyberQuest",
+  "short_name": "CyberQuest",
+  "description": "Cybersecurity MCQ drills, spaced review and a STAR interview coach.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0A0F17",
+  "theme_color": "#0F1A2B",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Next drill", "url": "/?drill=next" },
+    { "name": "STAR coach", "url": "/?star=1" }
+  ]
+}
