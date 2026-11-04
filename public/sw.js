@@ -1,5 +1,5 @@
 // CyberQuest service worker: offline app shell + push reminders.
-const VERSION = "cq-mvtq12r2";
+const VERSION = "cq-mw22tuxu";
 const SHELL = ["/", "/index.html", "/manifest.webmanifest", "/icons/icon-192.png", "/icons/icon-512.png", "/icons/badge-72.png"];
 
 self.addEventListener("install", (e) => {
