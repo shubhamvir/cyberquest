@@ -88,7 +88,7 @@ for (const sheet of env.LEARN) {
   if (!/^[a-z0-9-]{2,40}$/.test(sheet.id || "") || learnIds.has(sheet.id)) problems.push(`${w}: bad or duplicate id`);
   learnIds.add(sheet.id);
   if (!modIds.has(sheet.m)) problems.push(`${w}: unknown module ${sheet.m}`);
-  if (!["fund", "defend", "respond", "offense", "cloudid", "toolkit", "grc", "ics"].includes(sheet.track)) problems.push(`${w}: unknown track ${sheet.track}`);
+  if (!["fund", "defend", "respond", "offense", "cloudid", "toolkit", "grc", "ics", "interview"].includes(sheet.track)) problems.push(`${w}: unknown track ${sheet.track}`);
   if (![sheet.title, sheet.sub, sheet.c].every(okStr)) problems.push(`${w}: missing text`);
   checkBlocks(sheet.blocks, w);
 }
