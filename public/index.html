@@ -188,6 +188,8 @@ textarea{width:100%;min-height:96px;border:1.5px solid var(--line);border-radius
 textarea:focus{border-color:var(--accent);outline:none}
 .model{display:flex;flex-direction:column;gap:10px}
 .model p{margin:0}
+.exlabel{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin:2px 0}
+hr.exsep{width:100%;border:none;border-top:1px solid var(--line);margin:14px 0 2px}
 .model .fill{background:color-mix(in srgb,var(--accent) 22%,transparent);border-radius:4px;padding:0 3px;font-style:italic}
 .checks{display:flex;flex-direction:column;gap:8px}
 .checks label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
@@ -1430,11 +1432,11 @@ const STAR = {
       R: "Critical issues were fixed faster than before [add your measured figure].",
       tips: "Be ready to explain why CVSS alone isn't enough. Mention EPSS and the CISA KEV list." },
     { id: "s8", competency: "Leadership", q: "Tell me about a time you led a team under pressure.",
-      S: "I supervise event security teams of up to 50 people at sports and music events.",
-      T: "I was responsible for safe, quick entry screening and bag checks while keeping crowds moving.",
-      A: "I briefed the team on roles and escalation routes, placed staff based on expected crowd flow, kept checking queues and moved people where pressure was building. [Add one specific moment and your decision.]",
-      R: "[Outcome, e.g. doors opened on time with no safety incidents.] The same habits, clear briefings and constant monitoring, carry over to SOC work.",
-      tips: "Non-security leadership examples are fine. Link them back to the role." },
+      S: "At a government research centre I led the small SOC team protecting critical high-performance-computing systems during a spell of heightened threat activity.",
+      T: "I had to keep monitoring effective and the team focused while alert volume was high.",
+      A: "I set clear triage priorities and escalation routes, split coverage so no critical system went unwatched, ran short daily check-ins to share what we were seeing, and tuned the noisiest signatures so the team wasn't buried in false positives. [Add one decision you made under pressure.]",
+      R: "[Outcome, e.g. coverage held with no missed critical alerts and fewer false positives.] Clear briefs and constant monitoring are how I keep a team steady under pressure.",
+      tips: "Lead on the decisions you made and how you kept the team effective, not the title." },
     { id: "s9", competency: "Learning quickly", q: "Tell me about a time you had to learn something new quickly.",
       S: "For my master's project I needed tools I had never used: a self-hosted CI pipeline and compliance-as-code tools.",
       T: "I had to build a pipeline that checked cloud infrastructure against CIS benchmarks on every build.",
@@ -4418,6 +4420,67 @@ LEARN.push({
   ],
 });
 
+// Learn, Interview prep track: additional worked STAR examples covering more competencies.
+LEARN.push({
+  id: "star-ex-grow", track: "interview", m: "starq", mins: 8, c: "green",
+  title: "More STAR examples — initiative, teamwork & learning",
+  sub: "Four more worked answers: showing initiative, learning fast, leading a team, and owning a mistake.",
+  blocks: [
+    { t: "lead", text: "Panels probe how you grow and work with others as much as what you know. Here are four more **example answers** in full STAR shape — adapt them to your own experience." },
+    { t: "table", title: "\"Tell me about a time you showed initiative.\"", head: ["STAR", "Example answer"], rows: [
+      ["Situation", "At Alphaport, security checks in the delivery pipeline were manual and inconsistent, so issues were caught late."],
+      ["Task", "Nobody had asked, but I saw the gap and decided to close it."],
+      ["Action", "I introduced automated SAST and DAST gates into the CI/CD workflow, tuned them to cut noise, and showed developers how to read and act on the findings."],
+      ["Result", "Vulnerabilities were caught before release instead of in production, and developers got fast, actionable feedback."]] },
+    { t: "table", title: "\"A time you had to learn something quickly.\"", head: ["STAR", "Example answer"], rows: [
+      ["Situation", "My MSc work and role pushed me into Compliance as Code, which I hadn't used before."],
+      ["Task", "Get productive with the tooling fast enough to build a working pipeline."],
+      ["Action", "Over a few weeks I taught myself OSCAL, OpenSCAP and Checkov by building a policy-as-code pipeline that checked controls automatically, learning from the docs and by iterating on real failures."],
+      ["Result", "I could automate control checks that used to be manual, and it became my dissertation specialism."]] },
+    { t: "table", title: "\"A time you worked as part of a team.\"", head: ["STAR", "Example answer"], rows: [
+      ["Situation", "Leading the SOC team at C-DAC, a major monitoring migration needed everyone pulling the same way."],
+      ["Task", "Move to the new Security Onion setup without losing detection coverage."],
+      ["Action", "I split the work to people's strengths, paired junior analysts on the harder tasks so they learned, and ran short daily syncs to clear blockers."],
+      ["Result", "We completed the migration with coverage intact and the juniors came out more capable."]] },
+    { t: "table", title: "\"Tell me about a mistake you made.\"", head: ["STAR", "Example answer"], rows: [
+      ["Situation", "Early at Cybrlytics, I included a finding in a client VAPT report that turned out to be a false positive."],
+      ["Task", "Put it right and make sure it didn't happen again."],
+      ["Action", "I owned it straight away, corrected the report with the client, and from then on validated every finding with a second check and evidence before it went out."],
+      ["Result", "My reports became more trusted, and that validation step became a standard part of my process."]] },
+    { t: "callout", text: "A good 'mistake' answer is honest, not catastrophic: a real slip, owned quickly, with a concrete change that stuck. Panels are testing self-awareness, not looking for disasters." },
+  ],
+});
+
+LEARN.push({
+  id: "star-ex-judge", track: "interview", m: "starq", mins: 8, c: "teal",
+  title: "More STAR examples — judgement & communication",
+  sub: "Four more worked answers: pushing back, competing priorities, explaining risk simply, and acting with integrity.",
+  blocks: [
+    { t: "lead", text: "These competencies are where GRC candidates win or lose: can you disagree well, prioritise under load, make risk understandable, and do the right thing consistently?" },
+    { t: "table", title: "\"A time you disagreed with a decision.\"", head: ["STAR", "Example answer"], rows: [
+      ["Situation", "A project team wanted to accept a high risk to hit a release date."],
+      ["Task", "Make the risk visible and get a proper decision, without just blocking the team."],
+      ["Action", "I laid out the likelihood and impact in plain terms, offered a lighter compensating control that bought time, and escalated the call to a risk owner with the authority to make it."],
+      ["Result", "The owner chose the compensating control, so the risk was managed and documented rather than quietly accepted."]] },
+    { t: "table", title: "\"A time you juggled competing priorities.\"", head: ["STAR", "Example answer"], rows: [
+      ["Situation", "At C-DAC I was running internal audits, maintaining the risk register and supporting VAPT at the same time."],
+      ["Task", "Deliver the time-critical work without dropping anything high-risk."],
+      ["Action", "I triaged by deadline and risk, blocked protected time for the audit evidence that had a fixed external date, and was upfront with stakeholders about what would land when."],
+      ["Result", "The time-critical audit completed on schedule and nothing high-risk slipped."]] },
+    { t: "table", title: "\"Explaining something technical to a non-technical audience.\"", head: ["STAR", "Example answer"], rows: [
+      ["Situation", "Leadership had to approve risk treatment but didn't follow the technical detail."],
+      ["Task", "Give them enough to make a confident funding decision."],
+      ["Action", "I translated each risk into business impact with a simple high/medium/low rating and a recommended action, and used the risk register as a one-page view rather than technical reports."],
+      ["Result", "They could decide quickly and signed off the treatment plan and its budget."]] },
+    { t: "table", title: "\"A time you acted with integrity.\"", head: ["STAR", "Example answer"], rows: [
+      ["Situation", "During an audit I found an access-control gap that involved a senior person's account."],
+      ["Task", "Handle it correctly without it becoming political."],
+      ["Action", "I reported it exactly as I would any other finding — factual, with the evidence and the relevant clause — and proposed the same corrective action I'd apply to anyone."],
+      ["Result", "It was remediated like any other nonconformity, and treating it consistently protected both the finding and the relationship."]] },
+    { t: "note", title: "The thread through all four:", text: "Show your reasoning. In GRC the panel is buying your judgement, so the Action should make clear *why* you chose what you did, not just what you did." },
+  ],
+});
+
 (function () { var ix = {}; QB.forEach(function (m) { ix[m.id] = m; }); QX.forEach(function (x) { var m = ix[x.m]; if (!m) throw new Error("QX: unknown module " + x.m); x.q.forEach(function (q) { m.q.push(q.length === 4 ? q.concat(["j"]) : q); }); }); QX.length = 0; })();
 var QB_PACKS = [];
 // Monthly pack: new questions that are added to the bank in a given month.
@@ -5171,7 +5234,9 @@ function viewStarDetail() {
   const fields = [["S", "Situation", "Where, when, what was the problem? Keep it short."], ["T", "Task", "What were YOU responsible for?"], ["A", "Action", "What did you do, step by step, and why?"], ["R", "Result", "What changed? Numbers, evidence, what you learned."]];
   const draft = fields.map(([k, label, hint]) => '<div class="field"><label for="f' + k + '"><span class="letter">' + k + "</span>" + label + '</label><div class="hint">' + hint + '</div><textarea id="f' + k + '" data-field="' + k + '" rows="3">' + esc(d[k] || "") + "</textarea></div>").join("");
   const fill = s => esc(s).replace(/\[([^\]]+)\]/g, '<span class="fill">[$1]</span>');
-  const model = '<div class="model">' + fields.map(([k, label]) => '<p><span class="letter">' + k + "</span><b>" + label + ".</b> " + fill(p[k]) + "</p>").join("") + '<p class="small muted"><b>Coach note:</b> ' + esc(p.tips) + "</p></div>";
+  const exList = [{ S: p.S, T: p.T, A: p.A, R: p.R, tips: p.tips }].concat(p.ex || []);
+  const oneModel = (e, i) => (exList.length > 1 ? '<div class="exlabel">Example ' + (i + 1) + (e.label ? ' · ' + esc(e.label) : "") + "</div>" : "") + fields.map(([k, label]) => '<p><span class="letter">' + k + "</span><b>" + label + ".</b> " + fill(e[k] || "") + "</p>").join("") + (e.tips ? '<p class="small muted"><b>Coach note:</b> ' + esc(e.tips) + "</p>" : "");
+  const model = '<div class="model">' + (exList.length > 1 ? '<p class="small muted" style="margin:0 0 2px">' + exList.length + ' example answers — different angles on the same question. Build your own from the shapes.</p>' : "") + exList.map(oneModel).join('<hr class="exsep">') + "</div>";
   const checks = '<div class="checks">' + CHECKS.map((c, i) => '<label><input type="checkbox" data-check="' + i + '"' + ((d.checks || [])[i] ? " checked" : "") + "><span>" + c + "</span></label>").join("") + "</div>";
   const ai = MODE === "artifact" && AI.available ? '<div class="stack" style="gap:8px;margin-top:14px"><button class="btn" data-act="ai-feedback">Get AI feedback</button><div class="ai" id="aiout" hidden></div></div>' : "";
   return '<main class="wrap fade"><button class="back" data-go="star">' + I.back + ' All STAR questions</button><div class="card" style="max-width:820px;margin:8px auto 0"><div class="comp">' + esc(p.competency) + '</div><div class="starq" style="margin-top:6px">' + esc(p.q) + '</div><div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="' + (tab === "draft") + '" data-tab="draft">Your answer</button><button class="tab" role="tab" aria-selected="' + (tab === "model") + '" data-tab="model">Example answer</button></div>' +
